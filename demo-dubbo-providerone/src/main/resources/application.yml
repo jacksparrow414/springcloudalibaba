@@ -1,0 +1,31 @@
+# 服务提供者配置
+server:
+  port: 4133
+spring:
+  application:
+    name: demo-dubbo-providerone
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.0.105:8848
+        namespace: public
+        username: nacos
+        password: nacos
+  datasource:
+    name: defaultDatasource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/dhb?serverTimezone=UTC
+    password: 12345
+    username: root
+dubbo:
+  protocol:
+    id: dubbo
+    name: dubbo
+    port: -1
+  registry:
+    protocol: nacos
+    address: 192.168.0.105:8848
+  #设置提供的服务所在的包
+  scan:
+    base-packages: com.example.prividerone.*.impl
+

@@ -1,0 +1,30 @@
+# 统一服务的不同实例
+server:
+  port: 18081
+spring:
+  application:
+    name: demo-dubbo-clientone
+  cloud:
+    nacos:
+      discovery:
+        namespace: public
+        server-addr: 192.168.0.105:8848
+      password: nacos
+      username: nacos
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    name: defaultDatasource
+    password: 12345
+    url: jdbc:mysql://localhost:3306/dhb?serverTimezone=UTC
+    username: root
+dubbo:
+  protocol:
+    id: dubbo
+    name: dubbo
+    port: -1
+  registry:
+    address: 192.168.0.105:8848
+    protocol: nacos
+  # 设置超时时间
+  consumer:
+    timeout: 1000
